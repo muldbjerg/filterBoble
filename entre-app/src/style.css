@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+body{
+    background-color: #183766;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #fff;
+}
+
+.wrapper{
+    width: 95%;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+h1{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 42px;
+    text-align: center;
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+}
+
+footer{
+    position: fixed;
+    bottom: 20px;
+    width: 95%;
+    margin: 0 auto;
+    max-width: 400px;
+    text-align: center;
+    color: #3B5998;
+}
+
+footer#logout{
+    text-align: right;
+}
+
+footer#logout *{
+    float: right;
+}
+
+footer#logout p{
+    margin: 6px 15px 0px 0px;
+}
+
+footer#logout div{
+    border: 1px solid #39579A;
+    padding: 5px 20px;
+    border-radius: 8px;
+}
+
+footer#logout div{
+    color: #4162AB;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#facebookLogin{
+    padding: 20px 0;
+    margin: 0 50px;
+    background-color: #3B5998;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(15, 29, 51, 0.4);
+}
+
+#facebookLogin:active{
+    
+    background-color: #0F1D33;
+    box-shadow: 2px 2px 2px rgba(15, 29, 51, 0.4);
+}
+
+#profilImage{
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    position: absolute;
+    z-index: -1;
+}
