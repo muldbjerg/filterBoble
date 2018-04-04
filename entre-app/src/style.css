@@ -56,6 +56,7 @@ footer#logout div{
 }
 
 #facebookLogin{
+    cursor: pointer;
     padding: 20px 0;
     margin: 0 50px;
     background-color: #3B5998;
