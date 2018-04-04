@@ -26,8 +26,19 @@ class AppFront extends Component{
             profileImgSrc: val.user.picture.data.url,
             loggedIn: true,
         });
+    }
 
-        console.log(this.state);
+    logout = (msg) => {
+        if(msg === "error"){
+            alert("Fejl opstået ved udlogning - kontakt administratorerne");
+        }
+
+        this.setState({
+            name: "",
+            first_name: "",
+            profileImgSrc: "",
+            loggedIn: false,
+        });
     }
     
     render(){
@@ -44,7 +55,7 @@ class AppFront extends Component{
                 { !this.state.loggedIn &&
                     <FooterDescription />
                 }{ this.state.loggedIn &&
-                    <FooterLogout />
+                    <FooterLogout logout={ this.logout } />
                 }
             </div>
         );

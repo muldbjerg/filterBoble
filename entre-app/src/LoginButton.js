@@ -11,38 +11,48 @@ class LoginButton extends Component {
     document.removeEventListener('FBObjectReady', this.initializeFacebookLogin);
   }
 
-  /**
-   * Init FB object and check Facebook Login status
-   */
+  // Init FB object and check Facebook Login status
   initializeFacebookLogin = () => {
     this.FB = window.FB;
     this.checkLoginStatus();
   }
 
-  /**
-   * Check login status
-   */
+  // Check login status
   checkLoginStatus = () => {
     this.FB.getLoginStatus(this.facebookLoginHandler);
   }
 
-  /**
-   * Check login status and call login api is user is not logged in
-   */
-  facebookLogin = () => {
-    if (!this.FB) return;
-
-    this.FB.getLoginStatus(response => {
-      if (response.status === 'connected') {
-        this.facebookLoginHandler(response);
-      } else {
-        this.FB.login(this.facebookLoginHandler, {scope: 'public_profile'});
-      }
-    }, );
+  // Handle login response
+  facebookLoginHandler = response => {
+    if (response.status === 'connected') {
+      this.FB.api('/me?fields=id,first_name,name,birthday,picture.width(9999)', userData => {
+        let result = {
+          ...response,
+          user: userData
+        };
+        this.onFacebookLogin(true, result);
+      });
+    } else {
+      this.onFacebookLogin(false);
+    }
   }
 
-  onFacebookLogin = (loginStatus, resultObject) => {
+  // Check login status and call login api is user is not logged in
+  facebookLogin = () => {
+    if (this.FB){
+      this.FB.getLoginStatus(response => {
+        if (response.status === 'connected') {
+          this.facebookLoginHandler(response);
+        } else {
+          this.FB.login(this.facebookLoginHandler, {scope: 'public_profile, user_birthday'});
+        }
+      }, );
+    }
     
+  }
+
+  // Set state when logged in
+  onFacebookLogin = (loginStatus, resultObject) => {
     if (loginStatus === true) {
         this.setState({
           name: resultObject.user.name,
@@ -51,35 +61,18 @@ class LoginButton extends Component {
         
         // Send data to parent
         this.props.saveData(resultObject);
-        console.log(resultObject);
-    } 
 
+        // Save data to firebase
+        this.saveDataToFirebase(resultObject);
+    } 
   } 
 
-  /**
-   * Handle login response
-   */
-  facebookLoginHandler = response => {
-    if (response.status === 'connected') {
-      this.FB.api('/me?fields=id,first_name,name,age_range,birthday,picture.width(9999)', userData => {
-        let result = {
-          ...response,
-          user: userData
-        };
-        this.onFacebookLogin(true, result);
-      });
-
-      // this.FB.api('10214336179372637/picture', 'GET', userData => {
-        
-      //   console.log(userData);
-      // });
-    } else {
-      this.onFacebookLogin(false);
-    }
+  saveDataToFirebase = (resultObject) => {
+    console.log(resultObject);
+    // firebase.database().ref().child('/content').set(this.props.text);
   }
 
   render() {
-    let {children} = this.props;
     return (
       <div id="facebookLogin" onClick={this.facebookLogin}>
         Login med Facebook
