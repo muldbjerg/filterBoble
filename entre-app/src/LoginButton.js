@@ -47,8 +47,7 @@ class LoginButton extends Component {
           this.FB.login(this.facebookLoginHandler, {scope: 'public_profile, user_birthday'});
         }
       }, );
-    }
-    
+    } 
   }
 
   // Set state when logged in
@@ -56,7 +55,7 @@ class LoginButton extends Component {
     if (loginStatus === true) {
         this.setState({
           name: resultObject.user.name,
-          profileImgSrc: "https://graph.facebook.com/" + resultObject.user.id + "/picture?type=large"
+          // profileImgSrc: "https://graph.facebook.com/" + resultObject.user.id + "/picture?type=large"
         });
         
         // Send data to parent
@@ -68,8 +67,16 @@ class LoginButton extends Component {
   } 
 
   saveDataToFirebase = (resultObject) => {
-    console.log(resultObject);
-    // firebase.database().ref().child('/content').set(this.props.text);
+    // let first_name = resultObject.user.first_name;
+    firebase.database().ref().child('/profil/first-name').set(resultObject.user.first_name);
+    firebase.database().ref().child('/profil/name').set(resultObject.user.name);
+    firebase.database().ref().child('/profil/birthday').set(resultObject.user.birthday);
+    firebase.database().ref().child('/profil/profileImgSrc').set(resultObject.user.picture.data.url);
+    
+    // let dbCon = firebase.database().ref('/profil');
+    // dbCon.push({
+    //   first_name: resultObject.user.first_name,
+    // });
   }
 
   render() {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as firebase from 'firebase';
 
 class FooterLogout extends Component{
 
@@ -23,11 +24,15 @@ class FooterLogout extends Component{
 
     // Log Facebook out
     logFacebookOut = () => {
+        // console.log(this.FB.getLoginStatus());
         if(this.FB){
             this.props.logout();
             this.deleteFacebookPermissions();
             this.FB.logout();
+            firebase.database().ref().child('/profil').remove();
+            this.initializeFacebookLogin();
         }
+        // console.log(this.FB.getLoginStatus());
     }
 
     render(){
