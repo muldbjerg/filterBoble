@@ -1,44 +1,55 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
+import Activity from './Activity.js';
 
 class Feed extends Component{
 
-   
-    componentDidMount(){
-        let content = firebase.database().ref('Activity');
-        
-        let activities = content.orderByChild('Time').on('value', snapshot => {
-            console.log(snapshot.val())
-        });
-
-    
+    constructor(){
+        super();
+        this.contentRef = firebase.database().ref('Activity');
     }
-  
+
+    state = {
+        activitiesList: [],
+        loading: true
+    };
+
+    componentDidMount(){
+        this.listenForActivities(this.contentRef);
+    }
+
+    // Listener to get data from firebase and update listview accordingly
+    listenForActivities(contentRef) {
+        contentRef.on('value', (snapshot) => {
+            var activities = [];
+            snapshot.forEach((child) => {
+                activities.push({
+                    Content: child.val().Content,
+                    Time: child.val().Time,
+                    _key: child.key
+                });
+            });
+
+            // Sorts the activities and sets state
+            this.setState({
+                activitiesList: activities.sort(this.sortActivitiesByTime),
+                loading: false
+            });
+        });
+    }
+
+    sortActivitiesByTime(a,b){
+        return b.Time - a.Time;
+    }
 
     render(){
-        const numbers = [1, 2, 3, 4, 5];
-        const listItems = numbers.map((number, i) =>
-            <li key={i}>{number}</li>
-        );
         return (
-            <ul>
-                {listItems}
-            </ul>
+
+            <div>
+                <h6>Feed</h6>
+                <Activity activities={ this.state.activitiesList } loading={this.state.loading} ></Activity>
+            </div>
         );
     }
 }
-
-function snapshotToArray(snapshot) {
-    var returnArr = [];
-
-    snapshot.forEach(function(childSnapshot) {
-        var item = childSnapshot.val();
-        item.key = childSnapshot.key;
-
-        returnArr.push(item);
-    });
-
-    return returnArr;
-};
-
 export default Feed;

@@ -24,6 +24,7 @@ class AppFront extends Component{
         // When logging in - title gets pushed down
         TweenMax.to("#title", 1, { marginTop: 340 });
         TweenMax.from("#profilImage", 1, { height: 0 });
+        TweenMax.from("#profilImageOverlay", 1, { height: 0 }, "-=1");
         
         this.setState({
             name: val.user.name,
@@ -35,6 +36,7 @@ class AppFront extends Component{
         setTimeout(() => {
             TweenMax.to("#title", 1, { marginTop: 100 });
             TweenMax.to("#profilImage", 1, { height: 150 });
+            TweenMax.to("#profilImageOverlay", 1, { top: -150 }, "-=1");
         }, 4000);      
     }
 

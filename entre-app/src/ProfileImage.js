@@ -4,7 +4,10 @@ class ProfileImage extends Component{
 
     render(){
         return (
-            <div id="profilImage" style={{ backgroundImage: 'Url(' + this.props.profileImgSrc + ')' }}>
+            <div>
+                <div id="profilImageOverlay"></div>
+                <div id="profilImage" style={{ backgroundImage: 'Url(' + this.props.profileImgSrc + ')' }}>
+                </div>
             </div>
         );
     }
