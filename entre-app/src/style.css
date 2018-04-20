@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+body{
+    background-color: #183766;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #fff;
+}
+
+.wrapper{
+    width: 95%;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+h1{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 42px;
+    text-align: center;
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+    margin-top: 120px;
+}
+
+h6{
+    margin: 0px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #0F1D33;
+}
+
+footer{
+    position: fixed;
+    margin: 0 auto; /* Will not center vertically and won't work in IE6/7. */
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    width: 95%;
+    text-align: center;
+    color: #3B5998;
+    font-size: 14px;
+    max-width: 600px;
+}
+
+footer#logout{
+    text-align: right;
+}
+
+footer#logout *{
+    float: right;
+}
+
+footer#logout p{
+    margin: 6px 15px 0px 0px;
+}
+
+footer#logout div{
+    border: 1px solid #39579A;
+    padding: 5px 20px;
+    border-radius: 8px;
+}
+
+footer#logout div{
+    color: #4162AB;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#facebookLogin{
+    cursor: pointer;
+    padding: 20px 0;
+    margin: 0 50px;
+    background-color: #3B5998;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(15, 29, 51, 0.4);
+}
+
+#facebookLogin:active{
+    
+    background-color: #0F1D33;
+    box-shadow: 2px 2px 2px rgba(15, 29, 51, 0.4);
+}
+
+#profilImage{
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    position: absolute;
+    z-index: -2;
+}
+
+#profilImageOverlay{
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    /* background: #f60; */
+    background: -moz-linear-gradient(top, rgba(24,55,102,0) 0%, rgba(24,55,102,0) 65%, rgba(24,55,102,1) 97%, rgba(24,55,102,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(24,55,102,0)), color-stop(65%, rgba(24,55,102,0)), color-stop(97%, rgba(24,55,102,1)), color-stop(100%, rgba(24,55,102,1)));
+    background: -webkit-linear-gradient(top, rgba(24,55,102,0) 0%, rgba(24,55,102,0) 65%, rgba(24,55,102,1) 97%, rgba(24,55,102,1) 100%);
+    background: -o-linear-gradient(top, rgba(24,55,102,0) 0%, rgba(24,55,102,0) 65%, rgba(24,55,102,1) 97%, rgba(24,55,102,1) 100%);
+    background: -ms-linear-gradient(top, rgba(24,55,102,0) 0%, rgba(24,55,102,0) 65%, rgba(24,55,102,1) 97%, rgba(24,55,102,1) 100%);
+    background: linear-gradient(to bottom, rgba(24,55,102,0) 0%, rgba(24,55,102,0) 65%, rgba(24,55,102,1) 97%, rgba(24,55,102,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#183766', endColorstr='#183766', GradientType=0 );
+
+}
+
+
+.activityItem{
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    color: #0F1D33;
+}
+
+
+
+@media only screen and (max-width:400px){
+
+
+
+}
