@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
+
 class Activity extends Component{
-
-
+    
     render(){
         let activities = this.props.activities;
         
@@ -22,9 +22,9 @@ class Activity extends Component{
           <div className="activities">
             { Object.keys(activities).map(function(key) {
                 return (
-                  <div key={key} className="activityItem">
-                    <div>{ activities[key].Content }</div>
-                    <div>{ activities[key].Time }</div>
+                  <div key={key} className={"activityItem " + activities[key].Content } >
+                    <div>{ activities[key].Firstname + " " + activities[key].ContentTekst }</div>
+                    <div><span>. </span></div>
                   </div>
                 );
             })}

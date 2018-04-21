@@ -11,6 +11,7 @@ class AppFront extends Component{
         this.state = {
             loggedIn: false,
             name: "",
+            firstname: "",
             profileImgSrc: "", //"https://scontent-arn2-1.xx.fbcdn.net/v/t31.0-8/15391382_10210111980450304_2587369804048464496_o.jpg",
             username: null
         };
@@ -27,6 +28,7 @@ class AppFront extends Component{
             if(snapshot.val()){
                 this.setState({
                     name: snapshot.val().name,
+                    firstname: snapshot.val().firstname,
                     profileImgSrc: snapshot.val().profileImgSrc,
                     birthday: snapshot.val().birthday,
                     loggedIn: true
@@ -50,7 +52,7 @@ class AppFront extends Component{
                 {this.state.loggedIn &&
                     <div>
                         <Sidebar name={this.state.name} profileImgSrc={this.state.profileImgSrc} birthday={this.state.birthday} /> 
-                        <Feed />
+                        <Feed firstname={this.state.firstname} />
                     </div>
                 }{ !this.state.loggedIn &&
                     <div id="">

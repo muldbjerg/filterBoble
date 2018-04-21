@@ -117,7 +117,33 @@ footer#logout div{
     padding: 15px;
     margin: 10px 0;
     color: #0F1D33;
+    background-position: 97%;
+    background-repeat: no-repeat;
+    background-size: 34px;
 }
+
+.activityItem:last-child{
+    margin-bottom: 100px;
+}
+
+.activityItem span{
+    font-size: 0px;
+}
+
+
+.activityItem.Baby{
+    background-image:url('icons/Baby_icon.png');
+}
+
+.activityItem.Student{
+    background-image:url('icons/Student_icon.png');
+}
+
+.activityItem.Gift{
+    background-image:url('icons/Gift_icon.png');
+}
+
+
 
 
 

@@ -23,7 +23,7 @@ class Activity extends Component{
             { Object.keys(activities).map(function(key) {
                 return (
                   <div key={key} className="activityItem">
-                    <div>{ activities[key].Content }</div>
+                    <div>{ this.props.firstname + " " + activities[key].ContentTekst }</div>
                     <div>{ activities[key].Time }</div>
                   </div>
                 );
