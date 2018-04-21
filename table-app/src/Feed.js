@@ -10,7 +10,6 @@ class Feed extends Component{
     }
 
     state = {
-        firstname: "",
         activitiesList: [],
         loading: true
     };
@@ -27,6 +26,7 @@ class Feed extends Component{
                 activities.push({
                     Content: child.val().Content,
                     ContentTekst: child.val().ContentTekst,
+                    Firstname: this.props.firstname,
                     Time: child.val().Time,
                     _key: child.key
                 });
@@ -34,7 +34,6 @@ class Feed extends Component{
 
             // Sorts the activities and sets state
             this.setState({
-                firstname: this.props.firstname,
                 activitiesList: activities.sort(this.sortActivitiesByTime),
                 loading: false
             });
@@ -49,7 +48,7 @@ class Feed extends Component{
         return (
             <div id="feed">
                 <h6>Feed</h6>
-                <Activity activities={this.state.activitiesList} firstname={this.state.firstname} loading={this.state.loading} ></Activity>
+                <Activity activities={this.state.activitiesList} loading={this.state.loading} ></Activity>
             </div>
         );
     }
