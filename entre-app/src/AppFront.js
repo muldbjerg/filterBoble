@@ -21,6 +21,7 @@ class AppFront extends Component{
     }
 
     saveData = (val) => {
+        console.log(val);
         // When logging in - title gets pushed down
         TweenMax.to("#title", 1, { marginTop: 340 });
         TweenMax.from("#profilImage", 1, { height: 0 });
@@ -28,7 +29,7 @@ class AppFront extends Component{
         
         this.setState({
             name: val.user.name,
-            first_name: val.user.first_name,
+            firstname: val.user.first_name,
             profileImgSrc: val.user.picture.data.url,
             loggedIn: true,
         });
@@ -51,7 +52,7 @@ class AppFront extends Component{
         setTimeout(() => {
             this.setState({
                 name: "",
-                first_name: "",
+                firstname: "",
                 profileImgSrc: "",
                 loggedIn: false,
             });
@@ -62,9 +63,9 @@ class AppFront extends Component{
         return (           
             <div className="wrapper">
                 <ProfileImage profileImgSrc={ this.state.profileImgSrc } />
-                <Title name={ this.state.first_name } />
+                <Title name={ this.state.firstname } />
                 {this.state.loggedIn &&
-                    <Feed />
+                    <Feed firstname={this.state.firstname} />
                 }{ !this.state.loggedIn &&
                     <LoginButton saveData={ this.saveData } />
                 }

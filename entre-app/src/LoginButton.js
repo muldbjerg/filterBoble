@@ -68,7 +68,7 @@ class LoginButton extends Component {
 
   saveDataToFirebase = (resultObject) => {
     // let first_name = resultObject.user.first_name;
-    firebase.database().ref().child('/profil/first-name').set(resultObject.user.first_name);
+    firebase.database().ref().child('/profil/firstname').set(resultObject.user.first_name);
     firebase.database().ref().child('/profil/name').set(resultObject.user.name);
     firebase.database().ref().child('/profil/birthday').set(resultObject.user.birthday);
     firebase.database().ref().child('/profil/profileImgSrc').set(resultObject.user.picture.data.url);

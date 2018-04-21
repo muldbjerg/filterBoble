@@ -19,8 +19,6 @@ class Sidebar extends Component{
                 <div id="sidebarInfo">
                     <label>INDE I BOBLEN ER</label>
                     <h2>{ this.props.name }</h2>
-                    <label>KØN</label>
-                    <h2>{ this.props.name }</h2>
                     <label>ALDER</label>
                     <h2>{ this.calculateAge(this.props.birthday) }</h2>
                 </div>

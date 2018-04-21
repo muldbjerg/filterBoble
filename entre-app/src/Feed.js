@@ -23,11 +23,15 @@ class Feed extends Component{
         contentRef.on('value', (snapshot) => {
             var activities = [];
             snapshot.forEach((child) => {
-                activities.push({
-                    Content: child.val().Content,
-                    Time: child.val().Time,
-                    _key: child.key
-                });
+                if(child.val().Time > 0){
+                    activities.push({
+                        ContentTekst: child.val().ContentTekst,
+                        Content: child.val().Content,
+                        Firstname: this.props.firstname,
+                        Time: child.val().Time,
+                        _key: child.key
+                    });
+                }
             });
 
             // Sorts the activities and sets state
@@ -46,8 +50,8 @@ class Feed extends Component{
         return (
 
             <div>
-                <h6>Feed</h6>
-                <Activity activities={ this.state.activitiesList } loading={this.state.loading} ></Activity>
+                <h6>Feed</h6> 
+                <Activity activities={this.state.activitiesList} loading={this.state.loading} ></Activity>
             </div>
         );
     }
