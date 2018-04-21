@@ -23,13 +23,15 @@ class Feed extends Component{
         contentRef.on('value', (snapshot) => {
             var activities = [];
             snapshot.forEach((child) => {
-                activities.push({
-                    Content: child.val().Content,
-                    ContentTekst: child.val().ContentTekst,
-                    Firstname: this.props.firstname,
-                    Time: child.val().Time,
-                    _key: child.key
-                });
+                if(child.val().Time > 0){
+                    activities.push({
+                        Content: child.val().Content,
+                        ContentTekst: child.val().ContentTekst,
+                        Firstname: this.props.firstname,
+                        Time: child.val().Time,
+                        _key: child.key
+                    });
+                }
             });
 
             // Sorts the activities and sets state
