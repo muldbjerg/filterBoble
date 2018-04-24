@@ -16,34 +16,44 @@ class Video extends Component{
 
     componentDidMount(){
         let newVideoSrc = this.state.videoSrc;
-        const rootRef = firebase.database().ref();
-        const contentRef = rootRef.child('content');
-        contentRef.on('value', snap => {
-            
-            console.log(snap.val());
-            if(snap.val() == "Baby"){
-                newVideoSrc = "https://www.youtube.com/embed/9hGa3w52RjM";
-            }
-            else if(snap.val() == "Uddannelse"){
-                newVideoSrc = "https://www.youtube.com/embed/FiWsKJ-iYyo";
-            }
-            else if(snap.val() == "Hus"){
-                newVideoSrc = "https://www.youtube.com/embed/BQjBrt9LriY";
+        this.contentRef = firebase.database().ref('Activity');
+        this.contentRef.on('value', (snapshot) => {
+            var activities = [];
+            snapshot.forEach((child) => {
+                if(child.val().Time > 0){
+                    activities.push({
+                        ContentTekst: child.val().ContentTekst,
+                        Content: child.val().Content,
+                        Firstname: this.props.firstname,
+                        Time: child.val().Time,
+                        _key: child.key
+                    });
+                }
+            });
+
+            activities = activities.sort(this.sortActivitiesByTime);
+
+            for(let i = 0; i < 1; i++){
+                newVideoSrc = "/video/" + activities[i].Content + ".mp4";
             }
 
+
             this.setState({
-                content: snap.val(),
+                activitiesList: activities.sort(this.sortActivitiesByTime),
+                content: snapshot.val(),
                 videoSrc: newVideoSrc
             });
         });
     }
 
+    sortActivitiesByTime(a,b){
+        return b.Time - a.Time;
+    }
+
     render(){
         return(
             <div>
-                <iframe id="myVideo" width="420" height="345" src={this.state.videoSrc + "?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1"} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
-                <div>{this.props.filter}</div>
-                <div>{this.state.videoSrc}</div>
+                <video id="myVideo" autoplay="" name="media"  src={ this.state.videoSrc } type="video/mp4" loop />
             </div>
         );
     }
