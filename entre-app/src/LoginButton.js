@@ -25,7 +25,7 @@ class LoginButton extends Component {
   // Handle login response
   facebookLoginHandler = response => {
     if (response.status === 'connected') {
-      this.FB.api('/me?fields=id,first_name,name,birthday,picture.width(9999)', userData => {
+      this.FB.api('/me?fields=id,first_name,name,picture.width(9999)', userData => {
         let result = {
           ...response,
           user: userData
@@ -44,7 +44,7 @@ class LoginButton extends Component {
         if (response.status === 'connected') {
           this.facebookLoginHandler(response);
         } else {
-          this.FB.login(this.facebookLoginHandler, {scope: 'public_profile, user_birthday'});
+          this.FB.login(this.facebookLoginHandler, {scope: 'public_profile'});
         }
       }, );
     } 
@@ -63,20 +63,16 @@ class LoginButton extends Component {
 
         // Save data to firebase
         this.saveDataToFirebase(resultObject);
+
+        // Set boble to active
+        firebase.database().ref('/BobleActive').child('/Active').set(true);
     } 
   } 
 
   saveDataToFirebase = (resultObject) => {
-    // let first_name = resultObject.user.first_name;
     firebase.database().ref().child('/profil/firstname').set(resultObject.user.first_name);
     firebase.database().ref().child('/profil/name').set(resultObject.user.name);
-    firebase.database().ref().child('/profil/birthday').set(resultObject.user.birthday);
     firebase.database().ref().child('/profil/profileImgSrc').set(resultObject.user.picture.data.url);
-    
-    // let dbCon = firebase.database().ref('/profil');
-    // dbCon.push({
-    //   first_name: resultObject.user.first_name,
-    // });
   }
 
   render() {
