@@ -22,18 +22,31 @@ class FooterLogout extends Component{
         });
     }
 
+    // Delete what was saved on Firebase
+    deleteOnFirebase = () =>{
+        firebase.database().ref().child('/profil').remove();
+        firebase.database().ref('/BobleActive').child('/Active').set(false);
+
+        firebase.database().ref('/Activity/').once('value', (snapshot) => {
+            snapshot.forEach((child) => {
+                var path = child.val().Content + 'Item';
+                firebase.database().ref("Activity").child(path).child('Time').set(0);
+            });
+        });
+    }
+
     // Log Facebook out
     logFacebookOut = () => {
-        // console.log(this.FB.getLoginStatus());
         if(this.FB){
             this.props.logout();
             this.deleteFacebookPermissions();
             this.FB.logout();
-            firebase.database().ref().child('/profil').remove();
+            this.deleteOnFirebase();
             this.initializeFacebookLogin();
         }
-        // console.log(this.FB.getLoginStatus());
     }
+
+   
 
     render(){
         return (

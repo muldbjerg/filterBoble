@@ -37,7 +37,6 @@ class Video extends Component{
                 newVideoSrc = "/video/" + activities[i].Content + ".mp4";
             }
 
-
             this.setState({
                 activitiesList: activities.sort(this.sortActivitiesByTime),
                 content: snapshot.val(),
