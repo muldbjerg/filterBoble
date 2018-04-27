@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+body{
+    background-color: #183766;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.controlContainer{
+    width: 80%;
+    margin: 0 auto; 
+    color: #fff;
+    text-align: center;
+}
+
+header{
+    padding-top: 20px;
+    color: #4162AB;
+    margin-bottom: 50px;
+}
+
+h1{
+    margin: 0px;
+}
+
+h6{
+    margin: 0px;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+p{
+    margin: 0px;
+}
+
+#logoutBtn{
+    background-color: #fff;
+    width: 120px; 
+    margin: 60px auto 0 auto;
+    padding: 15px 0;
+    color: #183766;
+    border-radius: 10px;
+}
+
+#logoutConfirmationOverlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    z-index: -2;
+    opacity: 0;
+    background-color: rgba(24,55,102,0.8);
+
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+#logoutConfirmationOverlay.active{
+    z-index: 99;
+    opacity: 1;
+}
+
+#content{
+    color: #fff;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#content div{
+    width: 44%; 
+    margin: 0 3%;
+    padding: 20px 0;
+    color: #183766;
+    float: left;
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
