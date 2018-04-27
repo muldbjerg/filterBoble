@@ -3,12 +3,12 @@ import moment from 'moment';
 
 class Sidebar extends Component{
     
-    calculateAge(inputDate){
-        let birthday = moment(inputDate, "MM/DD/YYYY");
-        let now = new Date();
+    // calculateAge(inputDate){
+    //     let birthday = moment(inputDate, "MM/DD/YYYY");
+    //     let now = new Date();
 
-        return moment.duration(now - birthday).years();
-    }
+    //     return moment.duration(now - birthday).years();
+    // }
 
     render(){
         return (
@@ -19,8 +19,8 @@ class Sidebar extends Component{
                 <div id="sidebarInfo">
                     <label>INDE I BOBLEN ER</label>
                     <h2>{ this.props.name }</h2>
-                    <label>ALDER</label>
-                    <h2>{ this.calculateAge(this.props.birthday) }</h2>
+                    {/* <label>ALDER</label>
+                    <h2>{ this.calculateAge(this.props.birthday) }</h2> */}
                 </div>
                 
             </div>
