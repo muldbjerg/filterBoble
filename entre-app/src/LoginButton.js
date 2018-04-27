@@ -57,6 +57,9 @@ class LoginButton extends Component {
           name: resultObject.user.name,
           // profileImgSrc: "https://graph.facebook.com/" + resultObject.user.id + "/picture?type=large"
         });
+
+        // Reset firebase
+        this.resetFirebase();
         
         // Send data to parent
         this.props.saveData(resultObject);
@@ -68,6 +71,16 @@ class LoginButton extends Component {
         firebase.database().ref('/BobleActive').child('/Active').set(true);
     } 
   } 
+
+  // Delete time from 
+  resetFirebase = () => {
+    firebase.database().ref('/Activity/').once('value', (snapshot) => {
+      snapshot.forEach((child) => {
+          var path = child.val().Content + 'Item';
+          firebase.database().ref("Activity").child(path).child('Time').set(0);
+      });
+  });
+  }
 
   saveDataToFirebase = (resultObject) => {
     firebase.database().ref().child('/profil/firstname').set(resultObject.user.first_name);

@@ -52,7 +52,7 @@ class FooterLogout extends Component{
         return (
             <footer id="logout">
                 <div id="logoutBtn" onClick={this.logFacebookOut}>Log ud</div>
-                <p>Læs mere om projektet</p> 
+                {/* <p>Læs mere om projektet</p>  */}
             </footer>
            
         );

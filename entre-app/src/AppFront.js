@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 import "./style.css";
 import Title from './Title.js';
 import ProfileImage from './ProfileImage.js';
@@ -18,10 +18,22 @@ class AppFront extends Component{
             profileImgSrc: "", //"https://scontent-arn2-1.xx.fbcdn.net/v/t31.0-8/15391382_10210111980450304_2587369804048464496_o.jpg",
             username: null
         };
+
+        this.listenForChanges();
+    }
+
+    // Listener to get data from firebase and update listview accordingly
+    listenForChanges() {
+        let contentRef = firebase.database().ref('/profil');
+        console.log(this.state.loggedIn);
+        contentRef.on('value', (snap) => {
+            if(snap.val() == null && this.state.loggedIn){
+                this.logout("");
+            }
+        });
     }
 
     saveData = (val) => {
-        console.log(val);
         // When logging in - title gets pushed down
         TweenMax.to("#title", 1, { marginTop: 340 });
         TweenMax.from("#profilImage", 1, { height: 0 });
@@ -46,7 +58,7 @@ class AppFront extends Component{
             alert("Fejl opstået ved udlogning - kontakt administratorerne");
         }
 
-        TweenMax.to("#title", 1, { marginTop: 0 });
+        TweenMax.to("#title", 1, { marginTop: 120 });
         TweenMax.to("#profilImage", 1, { height: 0});
 
         setTimeout(() => {
