@@ -12,11 +12,13 @@ class PictureSlider extends Component{
         pictures = this.props.pictures;
         picturePointer = 0;
         if(isFirst){
-            setTimeout(() => {
-                document.getElementById(picturePointer).style.opacity = 1;
-                isFirst = false;
-            }, 20);
-            this.slider();
+            if(pictures && pictures.length > 0){
+                setTimeout(() => {
+                    document.getElementById(picturePointer).style.opacity = 1;
+                    isFirst = false;
+                }, 20);
+                this.slider();
+            }
         }
     }
 
@@ -49,6 +51,7 @@ class PictureSlider extends Component{
             <div>
                { Object.keys(pictures).map(function(key) {
                 return (
+
                   <div key={key} id={key} className={"pictureSliderItem"} style={{backgroundImage: "url(" +pictures[key] + ")"}} >
                   </div>
                 );
