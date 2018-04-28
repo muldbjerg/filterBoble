@@ -3,7 +3,6 @@ import * as firebase from 'firebase';
 import PictureSlider from './PictureSlider';
 import './style.css';
 
-let images;
 
 class PictureFrame extends Component{
 

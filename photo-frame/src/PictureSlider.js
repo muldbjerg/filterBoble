@@ -13,6 +13,8 @@ class PictureSlider extends Component{
         picturePointer = 0;
         if(isFirst){
             if(pictures && pictures.length > 0){
+                picturePointer = Math.floor((Math.random() * pictures.length) + 1);
+                
                 setTimeout(() => {
                     document.getElementById(picturePointer).style.opacity = 1;
                     isFirst = false;
@@ -25,13 +27,15 @@ class PictureSlider extends Component{
     slider(){
         if(pictures && pictures.length > 0){
             setTimeout(() => {
-                if((picturePointer + 1) == pictures.length){
+                if((picturePointer + 1) === pictures.length){
                     document.getElementById(picturePointer).style.opacity = 0;
                     picturePointer = 0;
                     document.getElementById(picturePointer).style.opacity = 1;
                 }
                 else{
-                    document.getElementById(picturePointer).style.opacity = 0;
+                    if(picturePointer < (pictures.length - 1)){
+                        document.getElementById(picturePointer).style.opacity = 0;
+                    }
                     picturePointer += 1;
                     document.getElementById(picturePointer).style.opacity = 1;
                 }
