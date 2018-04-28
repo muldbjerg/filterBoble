@@ -43,7 +43,7 @@ h6{
     color: #0F1D33;
     background-position: 97%;
     background-repeat: no-repeat;
-    background-size: 34px;
+    background-size: 42px;
     box-shadow: 1px 2px 10px rgba(0,0,0,0.1), 0px 2px 4px rgba(0,0,0,0.2) ;
 }
 
@@ -55,22 +55,54 @@ h6{
     font-size: 0px;
 }
 
+
 .activityItem.Baby{
     background-image:url('icons/Baby_icon.png');
 }
 
-.activityItem.Student{
-    background-image:url('icons/Student_icon.png');
+.activityItem.Alkohol{
+    background-image:url('icons/Alkohol_icon.png');
+}
+
+.activityItem.Bil{
+    background-image:url('icons/Bil_icon.png');
+}
+
+.activityItem.Gamer{
+    background-image:url('icons/Gamer_icon.png');
 }
 
 .activityItem.Gift{
     background-image:url('icons/Gift_icon.png');
 }
 
+.activityItem.Greenpeace{
+    background-image:url('icons/Greenpeace_icon.png');
+}
+
+.activityItem.Medicin{
+    background-image:url('icons/Medicin_icon.png');
+}
+
+.activityItem.OldSchoolRock{
+    background-image:url('icons/OldSchoolRock_icon.png');
+}
+
+.activityItem.Patron{
+    background-image:url('icons/Patron_icon.png');
+}
+
+.activityItem.Rigdomme{
+    background-image:url('icons/Rigdomme_icon.png');
+}
+
 .activityItem.Stoffer{
     background-image:url('icons/Stoffer_icon.png');
 }
 
+.activityItem.Universitet{
+    background-image:url('icons/Universitet_icon.png');
+}
 
 
 

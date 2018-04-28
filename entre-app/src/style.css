@@ -132,16 +132,49 @@ footer#logout div{
     background-image:url('icons/Baby_icon.png');
 }
 
-.activityItem.Student{
-    background-image:url('icons/Student_icon.png');
+.activityItem.Alkohol{
+    background-image:url('icons/Alkohol_icon.png');
+}
+
+.activityItem.Bil{
+    background-image:url('icons/Bil_icon.png');
+}
+
+.activityItem.Gamer{
+    background-image:url('icons/Gamer_icon.png');
 }
 
 .activityItem.Gift{
     background-image:url('icons/Gift_icon.png');
 }
 
+.activityItem.Greenpeace{
+    background-image:url('icons/Greenpeace_icon.png');
+}
 
+.activityItem.Medicin{
+    background-image:url('icons/Medicin_icon.png');
+}
 
+.activityItem.OldSchoolRock{
+    background-image:url('icons/OldSchoolRock_icon.png');
+}
+
+.activityItem.Patron{
+    background-image:url('icons/Patron_icon.png');
+}
+
+.activityItem.Rigdomme{
+    background-image:url('icons/Rigdomme_icon.png');
+}
+
+.activityItem.Stoffer{
+    background-image:url('icons/Stoffer_icon.png');
+}
+
+.activityItem.Universitet{
+    background-image:url('icons/Universitet_icon.png');
+}
 
 
 @media only screen and (max-width:400px){
