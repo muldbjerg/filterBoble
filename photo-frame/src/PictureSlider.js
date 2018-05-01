@@ -48,18 +48,16 @@ class PictureSlider extends Component{
     render(){
 
         if (!pictures) {
-          return false;
+        return ( <div id="pausescreen"></div> );
         }
 
         return(
             <div>
-               { Object.keys(pictures).map(function(key) {
-                return (
-
-                  <div key={key} id={key} className={"pictureSliderItem"} style={{backgroundImage: "url(" +pictures[key] + ")"}} >
-                  </div>
-                );
-            })}
+                {Object.keys(pictures).map(function(key) {
+                    return (
+                        <div key={key} id={key} className={"pictureSliderItem"} style={{backgroundImage: "url(" +pictures[key] + ")"}} ></div>
+                    );
+                })}
             </div>
         );
     }

@@ -9,6 +9,7 @@ class Video extends Component{
         super();
         
         this.state = {
+            status: false,
             content: "",
             videoSrc: "https://www.youtube.com/embed/tgbNymZ7vqY"
         };
@@ -17,6 +18,22 @@ class Video extends Component{
     componentDidMount(){
         let newVideoSrc = this.state.videoSrc;
         this.contentRef = firebase.database().ref('Activity');
+        this.activeStatus = firebase.database().ref('BobleActive').child('Active');
+        
+        this.activeStatus.on('value', (snap) => {
+            this.setState({
+                status: snap.val()
+            })
+
+            if(!this.state.status){
+                this.setState({
+                    activitiesList: "",
+                    content: "",
+                    videoSrc: ""
+                });
+            }
+        });
+
         this.contentRef.on('value', (snapshot) => {
             var activities = [];
             snapshot.forEach((child) => {
@@ -33,15 +50,23 @@ class Video extends Component{
 
             activities = activities.sort(this.sortActivitiesByTime);
 
-            for(let i = 0; i < 1; i++){
-                newVideoSrc = "/video/" + activities[i].Content + ".mp4";
+            if(activities.length > 0 && this.state.status){
+                newVideoSrc = "/video/" + activities['0'].Content + ".mp4";
+        
+                this.setState({
+                    activitiesList: activities.sort(this.sortActivitiesByTime),
+                    content: snapshot.val(),
+                    videoSrc: newVideoSrc
+                });
             }
-
-            this.setState({
-                activitiesList: activities.sort(this.sortActivitiesByTime),
-                content: snapshot.val(),
-                videoSrc: newVideoSrc
-            });
+            else{
+                this.setState({
+                    activitiesList: "",
+                    content: "",
+                    videoSrc: ""
+                });
+            }
+            
         });
     }
 
@@ -52,7 +77,7 @@ class Video extends Component{
     render(){
         return(
             <div>
-                <video id="myVideo" autoplay="" name="media"  src={ this.state.videoSrc } type="video/mp4" loop />
+                <video id="myVideo" name="media" src={ this.state.videoSrc } type="video/mp4" loop autoPlay />
             </div>
         );
     }

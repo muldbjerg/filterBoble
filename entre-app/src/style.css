@@ -43,6 +43,7 @@ footer{
 }
 
 footer#logout{
+    user-select: none; 
     text-align: right;
 }
 
@@ -67,6 +68,7 @@ footer#logout div{
 }
 
 #facebookLogin{
+    user-select: none; 
     cursor: pointer;
     padding: 20px 0;
     margin: 0 50px;

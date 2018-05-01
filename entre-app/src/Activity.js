@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 
 
 class Activity extends Component{
-    
+
+    componentDidMount(){
+      var audio = new Audio('sound/bling.mp3');
+      audio.play();
+    }
+
     render(){
         let activities = this.props.activities;
         

@@ -34,12 +34,16 @@ class PictureFrame extends Component{
             // Sorts the activities with the newest first
             activities = activities.sort(this.sortActivitiesByTime);
 
-            // Find the matching pictures to the newest activtity
-            this.findImagesContaining(this.images, activities['0'].Content)
+            
+            if(activities.length > 0){
+                // Find the matching pictures to the newest activtity
+                this.findImagesContaining(this.images, activities['0'].Content)
 
-            this.setState({
-                content: activities['0'].Content
-            });
+                this.setState({
+                    content: activities['0'].Content
+                });
+            }
+            
         });
     }
 

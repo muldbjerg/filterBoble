@@ -15,9 +15,12 @@ class FilterbobleDisplays extends Component{
         const rootRef = firebase.database().ref();
         const contentRef = rootRef.child('content');
         contentRef.on('value', snap => {
-            this.setState({
-                content: snap.val()
-            });
+            if(snap.val()){
+                this.setState({
+                    content: snap.val()
+                });
+            };
+            
         });
     }
 
